@@ -41,13 +41,13 @@ public class TransferAspect {
         }
 
         // Proceed and possibly log errors
-            if (!(boolean)jp.proceed()) {
-                String params = buildParamsString(paramNames, args);
-                String msg = logErrors(args, method.getName(), new String[] { params });
-                logAtLevel(logger, transfer.value(), msg);
-                return false;
-            }
-            else return true;
+        if (!((boolean)jp.proceed())&&transfer.logErrors()) {
+            String params = buildParamsString(paramNames, args);
+            String msg = logErrors(args, method.getName(), new String[] { params });
+            logAtLevel(logger, transfer.value(), msg);
+            return false;
+        }
+        return true;
         }
     
 
@@ -78,7 +78,7 @@ public class TransferAspect {
                     .collect(Collectors.joining(", "));
         }
         return IntStream.range(0, args.length)
-                .mapToObj(i -> names.length>i && names[i]!=null ? names[i] + "=" + String.valueOf(args[i]) : String.valueOf(args[i]))
+                .mapToObj(i -> names.length>i && names[i]!=null ? names[i]: String.valueOf(args[i]))
                 .collect(Collectors.joining(", "));
     }
 
