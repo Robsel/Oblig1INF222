@@ -41,17 +41,15 @@ public class TransferAspect {
         }
 
         // Proceed and possibly log errors
-        try {
-            return jp.proceed();
-        } catch (Throwable t) {
-            if (transfer.logErrors()) {
+            if (!(boolean)jp.proceed()) {
                 String params = buildParamsString(paramNames, args);
                 String msg = logErrors(args, method.getName(), new String[] { params });
                 logAtLevel(logger, transfer.value(), msg);
+                return false;
             }
-            throw t;
+            else return true;
         }
-    }
+    
 
     private void logAtLevel(Logger logger, Level level, String message) {
         if (level == null) level = Level.INFO;

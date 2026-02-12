@@ -23,7 +23,6 @@ public class Measures {
         printValues();
 
         w_in += a_m * 2;
-        w_in = w_in + a_m*2;
         h_cm -= 1;
         l_ft *= 1.05;
         a_m /= 2;

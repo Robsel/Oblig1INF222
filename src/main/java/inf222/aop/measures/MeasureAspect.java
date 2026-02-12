@@ -59,8 +59,7 @@ public class MeasureAspect {
     @Before("set(double inf222.aop.measures.Measures.*) &&args(value)")
     public void negaThrow(JoinPoint jp, double value) throws Throwable{
         if(value<0){
-            throw new Error("Negative Value detected.");
+            throw new Error("Illegal modification");
         }
     }
-
 }
