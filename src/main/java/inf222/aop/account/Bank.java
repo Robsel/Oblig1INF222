@@ -1,15 +1,14 @@
-package inf222.aop.account;
+ package inf222.aop.account;
 
 import inf222.aop.account.annotation.Transfer;
 
 // NB! Do not make changes to this file.
 public class Bank {
-
     /**
      * We do the conversion by first converting {@code amount} which is in the
      * currency{@code from} to NOK and then converting that value to the desired
      * {@code to} currency.
-     * 
+     *
      * @param amount Amount that will be transfered in {@code from} currency.
      * @param from   The currency we are transferring from.
      * @param to     The currency we are transferring to.
@@ -21,7 +20,7 @@ public class Bank {
 
     /**
      * Perform an international transfer
-     * 
+     *
      * @param fromIAcc from International Account
      * @param toIAcc   to International Account
      * @param amount   Amount to be transferred
@@ -38,7 +37,7 @@ public class Bank {
 
     /**
      * Perform an domestic transfer
-     * 
+     *
      * @param fromIAcc from Domestic Account
      * @param toIAcc   to Domestic Account
      * @param amount   Amount to be transferred
@@ -55,10 +54,10 @@ public class Bank {
 
     /**
      * NB! You should not add annotations to this method.
-     * 
+     *
      * Attempt to withdraw money from accounts. If the first account is lacking
      * funds, we will attempt to withdraw the rest from the second account.
-     * 
+     *
      * @param ac1    Account to first withdraw money from.
      * @param ac2    Accound to withdraw money from if the first account is lacking
      *               funds.
@@ -74,4 +73,5 @@ public class Bank {
 
         return ac1.withdraw(fromAc1) && ac2.withdraw(fromAc2);
     }
+
 }

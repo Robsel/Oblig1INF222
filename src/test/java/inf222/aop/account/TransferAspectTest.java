@@ -122,4 +122,5 @@ public class TransferAspectTest {
 
 		assertThat(aspectAppender.events).isEmpty();
 	}
+		
 }
